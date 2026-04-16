@@ -11,7 +11,8 @@ namespace Monogame_1
 
         Rectangle window;
 
-        Texture2D ;
+        Texture2D dino;
+        Vector2 dinoPos = new Vector2(300, 300);
         public Game1()
         {
             _graphics = new GraphicsDeviceManager(this);
@@ -25,6 +26,7 @@ namespace Monogame_1
             window = new Rectangle(0,0,800,600);
             _graphics.PreferredBackBufferWidth = window.Width;
             _graphics.PreferredBackBufferHeight = window.Height;
+            dino = Content.Load<Texture2D>("dino");
             _graphics.ApplyChanges();
 
             this.Window.Title = "Adding Content";
@@ -51,7 +53,10 @@ namespace Monogame_1
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.Azure);
+            _spriteBatch.Begin();
 
+            _spriteBatch.Draw(dino, dinoPos, Color.White);
+            _spriteBatch.End();
             // TODO: Add your drawing code here
 
             base.Draw(gameTime);
